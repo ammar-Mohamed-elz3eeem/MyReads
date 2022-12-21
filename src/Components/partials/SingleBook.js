@@ -33,7 +33,7 @@ const SingleBook = ({book, onShelfChange}) => {
 					{book.title}
 				</div>
 				<div className="book-authors">
-					{book.authors && book.authors[0]}
+					{book.authors && book.authors.join(", ")}
 				</div>
 			</div>
 		</li>

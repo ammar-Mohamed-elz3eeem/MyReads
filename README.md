@@ -13,8 +13,18 @@ the app is like a bookshelf for your books
 
 To get started developing right away:
 
-- install all project dependencies with `npm install`
-- start the development server with `npm start`
+- Clone this repo into your device using git clone command
+```
+$ git clone https://github.com/ammar-Mohamed-elz3eeem/MyReads.git
+```
+- install all project dependencies with npm
+```
+$ npm install
+```
+- start the development server
+```
+npm start
+```
 
 ## What You're Getting
 

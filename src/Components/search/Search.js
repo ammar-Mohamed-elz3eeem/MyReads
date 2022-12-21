@@ -1,32 +1,26 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { search, getAll } from "../../BooksAPI";
+import { search } from "../../BooksAPI";
 import Books from "../partials/Books";
 
 const Search = ({books, updateShelf}) => {
 
-	let unmounted = false;
-
 	const [searchQuery, setSearchQuery] = useState("")
-	const [searchedBooks, setSearchedBooks] = useState(books)
-
-	const searchResult = async () => {
-		search(searchQuery, 30).then((data) => {
-			setSearchedBooks(data)
-		})
-	}
-
-	const booksData = async () => {
-		await getAll().then((res) => {
-			setSearchedBooks(res)
-		})
-	}
+	const [searchedBooks, setSearchedBooks] = useState([...books])
 
 	const handleSearchQuery = (eve) => {
 		setSearchQuery(eve.target.value)
 	}
 
 	useEffect(() => {
+		let unmounted = false;
+		
+		const searchResult = async () => {
+			search(searchQuery, 30).then((data) => {
+				setSearchedBooks(data)
+			})
+		}
+		
 		if(!unmounted) {
 			if(searchQuery !== "") {
 				searchResult()

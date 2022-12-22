@@ -1,4 +1,5 @@
 import shelfOptions from "../utils/bookShelves";
+import propTypes from 'prop-types'
 
 const SingleBook = ({book, onShelfChange}) => {
 
@@ -36,6 +37,11 @@ const SingleBook = ({book, onShelfChange}) => {
 			</div>
 		</li>
 	);
+}
+
+SingleBook.propTypes = {
+	book: propTypes.object.isRequired,
+	onShelfChange: propTypes.func.isRequired
 }
 
 export default SingleBook;

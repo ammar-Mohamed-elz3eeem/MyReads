@@ -1,4 +1,5 @@
 import SingleBook from "./SingleBook";
+import propTypes from 'prop-types'
 
 const Books = ({books, handleShelfUpdate}) => {
 
@@ -9,6 +10,11 @@ const Books = ({books, handleShelfUpdate}) => {
 	return (
 		<ol className="books-grid">{data}</ol>
 	);
+}
+
+Books.propTypes = {
+	books: propTypes.array.isRequired,
+	handleShelfUpdate: propTypes.func.isRequired
 }
 
 export default Books;

@@ -2,14 +2,18 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { search } from "../../BooksAPI";
 import Books from "../partials/Books";
+import propTypes from 'prop-types';
 
 const Search = ({books, updateShelf}) => {
 
 	const [searchQuery, setSearchQuery] = useState("")
-	const [searchedBooks, setSearchedBooks] = useState([...books])
+	const [searchedBooks, setSearchedBooks] = useState([])
 
 	const handleSearchQuery = (eve) => {
 		setSearchQuery(eve.target.value)
+		if (searchQuery === "") {
+			setSearchedBooks([])
+		}
 	}
 
 	useEffect(() => {
@@ -26,6 +30,7 @@ const Search = ({books, updateShelf}) => {
 				searchResult()
 			}
 		}
+
 		return () => {
 			unmounted = true
 		}
@@ -49,6 +54,11 @@ const Search = ({books, updateShelf}) => {
 			</div>
 		</div>
 	);
+}
+
+Search.propTypes = {
+	books: propTypes.array.isRequired,
+	updateShelf: propTypes.func.isRequired
 }
 
 export default Search;

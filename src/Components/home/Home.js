@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Content from "../partials/Content";
 import Header from "../partials/Header";
 import Shelf from "../partials/Shelf";
+import propTypes from 'prop-types';
 
 const Home = ({books, updateShelf}) => {
 
@@ -30,6 +31,11 @@ const Home = ({books, updateShelf}) => {
 			</div>
 		</div>
 	);
+}
+
+Home.propTypes = {
+	books: propTypes.array.isRequired,
+	updateShelf: propTypes.func.isRequired
 }
 
 export default Home;

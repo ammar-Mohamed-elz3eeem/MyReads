@@ -1,4 +1,5 @@
 import Books from "./Books";
+import propTypes from 'prop-types';
 
 const Shelf = ({title, books, shelf_slug, handleShelf}) => {
 	return (
@@ -9,6 +10,13 @@ const Shelf = ({title, books, shelf_slug, handleShelf}) => {
 			</div>
 		</div>
 	);
+}
+
+Shelf.propTypes = {
+	books: propTypes.array.isRequired,
+	handleShelf: propTypes.func.isRequired,
+	title: propTypes.string.isRequired,
+	shelf_slug: propTypes.string.isRequired
 }
 
 export default Shelf;

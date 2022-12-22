@@ -11,9 +11,6 @@ const Search = ({books, updateShelf}) => {
 
 	const handleSearchQuery = (eve) => {
 		setSearchQuery(eve.target.value)
-		if (searchQuery === "") {
-			setSearchedBooks([])
-		}
 	}
 
 	useEffect(() => {
@@ -28,6 +25,8 @@ const Search = ({books, updateShelf}) => {
 		if(!unmounted) {
 			if(searchQuery !== "") {
 				searchResult()
+			} else {
+				setSearchedBooks([])
 			}
 		}
 

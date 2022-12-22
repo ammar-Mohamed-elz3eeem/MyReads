@@ -1,8 +1,14 @@
+import shelfOptions from "../utils/bookShelves";
+
 const SingleBook = ({book, onShelfChange}) => {
 
 	const handleBookShelfChange = (e) => {
 		onShelfChange(book, e.target.value)
 	}
+
+	const shelf_op = shelfOptions.map(shelfOption => (
+		<option key={shelfOption.slug} value={shelfOption.slug}>{shelfOption.title}</option>
+	));
 
 	return (
 		<li>
@@ -17,15 +23,7 @@ const SingleBook = ({book, onShelfChange}) => {
 							}}></div>
 					<div className="book-shelf-changer">
 						<select onChange={handleBookShelfChange} value={book.shelf ? book.shelf : "none"}>
-							<option value="none" disabled>
-								Move to..
-							</option>
-							<option value="currentlyReading">
-								Currently Reading
-							</option>
-							<option selected value="wantToRead">Want to Read</option>
-							<option value="read">Read</option>
-							<option value="none">None</option>
+							{shelf_op}
 						</select>
 					</div>
 				</div>

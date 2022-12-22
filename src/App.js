@@ -15,8 +15,10 @@ function NewApp() {
 	}
 
 	const updateShelf = async (book, shelf) => {
-		await update(book, shelf);
-		booksData();
+		book.shelf = shelf
+		await update(book, shelf).then(() => {
+			setBooks([...books.filter(b => book.id !== b.id), book])
+		})
 	}
 
 	useEffect(() => {

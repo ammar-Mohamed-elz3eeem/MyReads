@@ -6,7 +6,7 @@ const Shelf = ({title, books, shelf_slug, handleShelf}) => {
 		<div className="bookshelf">
 			<h2 className="bookshelf-title">{title}</h2>
 			<div className="bookshelf-books">
-				<Books books={books} handleShelfUpdate={handleShelf} />
+				<Books BooksIHave={books} books={books} handleShelfUpdate={handleShelf} />
 			</div>
 		</div>
 	);

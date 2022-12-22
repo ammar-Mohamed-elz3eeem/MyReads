@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { search } from "../../BooksAPI";
 import Books from "../partials/Books";
 import propTypes from 'prop-types';
+import { debounce } from "lodash";
 
 const Search = ({books, updateShelf}) => {
 
@@ -17,9 +18,13 @@ const Search = ({books, updateShelf}) => {
 		let unmounted = false;
 		
 		const searchResult = async () => {
-			search(searchQuery, 30).then((data) => {
-				setSearchedBooks(data)
-			})
+			const debouncedSearch = debounce(() => {
+				search(searchQuery, 30).then((data) => {
+					setSearchedBooks(data)
+				})
+			}, 500);
+
+			debouncedSearch()
 		}
 		
 		if(!unmounted) {
@@ -49,7 +54,7 @@ const Search = ({books, updateShelf}) => {
             	</div>
 			</div>
 			<div className="search-books-results">
-				{searchedBooks.length > 0 && <Books books={searchedBooks} handleShelfUpdate={updateShelf}></Books>}
+				{searchedBooks.length > 0 && <Books BooksIHave={books} books={searchedBooks} handleShelfUpdate={updateShelf}></Books>}
 			</div>
 		</div>
 	);

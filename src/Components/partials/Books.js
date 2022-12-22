@@ -1,10 +1,10 @@
 import SingleBook from "./SingleBook";
 import propTypes from 'prop-types'
 
-const Books = ({books, handleShelfUpdate}) => {
+const Books = ({BooksIHave , books, handleShelfUpdate}) => {
 
 	const data = books.map(book => (
-		<SingleBook onShelfChange={handleShelfUpdate} key={book.id} book={book} />
+		<SingleBook onShelfChange={handleShelfUpdate} books={BooksIHave} key={book.id} book={book} />
 	));
 
 	return (

@@ -1,15 +1,7 @@
-import shelfOptions from "../utils/bookShelves";
 import propTypes from 'prop-types'
+import ShelfChanger from './MoveBook';
 
-const SingleBook = ({book, onShelfChange}) => {
-
-	const handleBookShelfChange = (e) => {
-		onShelfChange(book, e.target.value)
-	}
-
-	const shelf_op = shelfOptions.map(shelfOption => (
-		<option key={shelfOption.slug} value={shelfOption.slug}>{shelfOption.title}</option>
-	));
+const SingleBook = ({book, books, onShelfChange}) => {
 
 	return (
 		<li>
@@ -22,11 +14,7 @@ const SingleBook = ({book, onShelfChange}) => {
 							backgroundImage:
 								book.imageLinks && `url(${book.imageLinks.thumbnail})`,
 							}}></div>
-					<div className="book-shelf-changer">
-						<select onChange={handleBookShelfChange} value={book.shelf ? book.shelf : "none"}>
-							{shelf_op}
-						</select>
-					</div>
+					<ShelfChanger books={books} book={book} updateShelf={onShelfChange} />
 				</div>
 				<div className="book-title">
 					{book.title}
